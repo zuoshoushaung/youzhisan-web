@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国泸州油纸伞伞乡 · 油纸伞非遗文化</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            color: #3a2a1a;
+            background: #faf6f0;
+            line-height: 1.8;
+        }
+        /* 导航栏 */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(58, 42, 26, 0.95);
+            padding: 15px 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+        nav a {
+            color: #f5e6d3;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #d4a574;
+        }
+        /* 首屏大图 */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #8b3a3a 0%, #c9684a 50%, #d4a574 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: "☂";
+            position: absolute;
+            font-size: 400px;
+            opacity: 0.08;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .hero h1 {
+            font-size: 56px;
+            letter-spacing: 8px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+        }
+        .hero p {
+            font-size: 20px;
+            letter-spacing: 4px;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+        .hero .subtitle {
+            font-size: 14px;
+            letter-spacing: 6px;
+            opacity: 0.7;
+            border-top: 1px solid rgba(255,255,255,0.4);
+            padding-top: 20px;
+        }
+        /* 通用板块 */
+        section {
+            padding: 80px 10%;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            color: #8b3a3a;
+            margin-bottom: 15px;
+            letter-spacing: 4px;
+        }
+        .section-line {
+            width: 60px;
+            height: 3px;
+            background: #d4a574;
+            margin: 0 auto 50px;
+        }
+        /* 关于板块 */
+        .about {
+            background: #fff;
+        }
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 17px;
+            text-indent: 2em;
+        }
+        .about-content p {
+            margin-bottom: 20px;
+        }
+        /* 制作工艺板块 */
+        .craft {
+            background: #faf6f0;
+        }
+        .craft-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .craft-card {
+            background: #fff;
+            padding: 35px 25px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(139, 58, 58, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .craft-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(139, 58, 58, 0.15);
+        }
+        .craft-icon {
+            font-size: 48px;
+            color: #c9684a;
+            margin-bottom: 15px;
+        }
+        .craft-card h3 {
+            color: #8b3a3a;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        .craft-card p {
+            font-size: 14px;
+            color: #7a6a5a;
+        }
+        /* 图片展示板块 */
+        .gallery {
+            background: #fff;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .gallery-item {
+            height: 220px;
+            border-radius: 8px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            color: #fff;
+            font-size: 18px;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+        .gallery-tip {
+            text-align: center;
+            margin-top: 30px;
+            color: #9a8a7a;
+            font-size: 14px;
+        }
+        /* 文化意义板块 */
+        .meaning {
+            background: #faf6f0;
+        }
+        .meaning-list {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .meaning-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            border-left: 4px solid #c9684a;
+        }
+        .meaning-num {
+            font-size: 36px;
+            color: #d4a574;
+            font-weight: bold;
+            min-width: 50px;
+        }
+        .meaning-text h3 {
+            color: #8b3a3a;
+            margin-bottom: 8px;
+        }
+        .meaning-text p {
+            color: #6a5a4a;
+            font-size: 15px;
+        }
+        /* 页脚 */
+        footer {
+            background: #3a2a1a;
+            color: #c9b8a8;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        footer h3 {
+            color: #d4a574;
+            margin-bottom: 15px;
+            letter-spacing: 4px;
+        }
+        footer p {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        footer .copyright {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 12px;
+            opacity: 0.6;
+        }
+        /* 响应式 */
+        @media (max-width: 768px) {
+            nav ul { gap: 20px; }
+            nav a { font-size: 14px; }
+            .hero h1 { font-size: 36px; letter-spacing: 4px; }
+            .hero p { font-size: 16px; }
+            section { padding: 60px 5%; }
+            .section-title { font-size: 26px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <ul>
+            <li><a href="#home">首页</a></li>
+            <li><a href="#about">关于油纸伞</a></li>
+            <li><a href="#craft">制作工艺</a></li>
+            <li><a href="#gallery">作品展示</a></li>
+            <li><a href="#meaning">文化意义</a></li>
+            <li><a href="#model3d">3D展示</a></li>
+            <li><a href="#contact">联系我们</a></li>
+        </ul>
+    </nav>
+    <!-- 首屏 -->
+    <div class="hero" id="home">
+        <h1>中国泸州油纸伞伞乡</h1>
+        <p>一把油纸伞 · 千年中国风</p>
+        <div class="subtitle">非物质文化遗产 · 匠心传承</div>
+    </div>
+    <!-- 关于油纸伞 -->
+    <section class="about" id="about">
+        <h2 class="section-title">关于油纸伞</h2>
+        <div class="section-line"></div>
+        <div class="about-content">
+            <p>油纸伞是中国传统工艺品之一，至今已有一千多年的历史。它以竹为骨，以纸为面，涂上桐油，既能遮风挡雨，又是极具东方美学的艺术品。</p>
+            <p>油纸伞工艺讲究"选材、制骨、糊面、上油、绘画"五大步骤，每一把伞都凝聚着匠人的心血与智慧。伞骨选用深山老竹，经过浸泡、晾晒、打磨等多道工序，坚韧耐用；伞面选用优质棉纸，涂上天然桐油，防水透光。</p>
+            <p>泸州、杭州、婺源等多地都有着悠久的制伞传统，油纸伞早已从生活用品升华为地域文化符号。2008年，<strong>泸州油纸伞制作技艺</strong>被列入国家级非物质文化遗产名录。</p>
+        </div>
+    </section>
+    <!-- 制作工艺 -->
+    <section class="craft" id="craft">
+        <h2 class="section-title">制作工艺</h2>
+        <div class="section-line"></div>
+        <div class="craft-grid">
+            <div class="craft-card">
+                <div class="craft-icon">🎋</div>
+                <h3>选竹制骨</h3>
+                <p>选用三年以上楠竹，经浸泡、晾晒、削制、钻孔等工序，制成伞骨骨架。</p>
+            </div>
+            <div class="craft-card">
+                <div class="craft-icon">📄</div>
+                <h3>裱糊伞面</h3>
+                <p>将优质棉纸逐片裱糊在伞骨上，接缝严密，平整无皱，是最考验耐心的一步。</p>
+            </div>
+            <div class="craft-card">
+                <div class="craft-icon">🎨</div>
+                <h3>手绘图案</h3>
+                <p>在伞面上手绘花鸟、山水、人物等传统图案，每一把都是独一无二的艺术品。</p>
+            </div>
+            <div class="craft-card">
+                <div class="craft-icon">🛢️</div>
+                <h3>上油晾晒</h3>
+                <p>均匀涂刷天然桐油，在阳光下自然晾晒干燥，使伞面防水耐用、通透温润。</p>
+            </div>
+        </div>
+    </section>
+    <!-- 作品展示 -->
+    <section class="gallery" id="gallery">
+        <h2 class="section-title">作品展示</h2>
+        <div class="section-line"></div>
+        <div class="gallery-grid">
+            <div class="gallery-item" style="background-image:url('picture/hongyou.webp');background-size:cover;background-position:center;">
+                <span style="width:100%;padding:8px;background-color:rgba(0,0,0,0.5);color:white;text-align:center;">红油纸伞</span>
+            </div>
+            <div class="gallery-item" style="background-image:url('picture/qinghua.webp');background-size:cover;background-position:center;">
+                <span style="width:100%;padding:8px;background-color:rgba(0,0,0,0.5);color:white;text-align:center;">青花伞面</span>
+            </div>
+            <div class="gallery-item" style="background-image:url('picture/shanshui.webp');background-size:cover;background-position:center;">
+                <span style="width:100%;padding:8px;background-color:rgba(0,0,0,0.5);color:white;text-align:center;">山水意境</span>
+            </div>
+            <div class="gallery-item" style="background-image:url('picture/huaniao.webp');background-size:cover;background-position:center;">
+                <span style="width:100%;padding:8px;background-color:rgba(0,0,0,0.5);color:white;text-align:center;">花鸟工笔</span>
+            </div>
+            <div class="gallery-item" style="background-image:url('picture/meihua.webp');background-size:cover;background-position:center;">
+                <span style="width:100%;padding:8px;background-color:rgba(0,0,0,0.5);color:white;text-align:center;">传统梅花</span>
+            </div>
+            <div class="gallery-item" style="background-image:url('picture/shinv.webp');background-size:cover;background-position:center;">
+                <span style="width:100%;padding:8px;background-color:rgba(0,0,0,0.5);color:white;text-align:center;">古风仕女</span>
+            </div>
+        </div>
+        
+    </section>
+    <!-- 文化意义 -->
+    <section class="meaning" id="meaning">
+        <h2 class="section-title">文化意义</h2>
+        <div class="section-line"></div>
+        <div class="meaning-list">
+            <div class="meaning-item">
+                <div class="meaning-num">01</div>
+                <div class="meaning-text">
+                    <h3>吉祥寓意</h3>
+                    <p>"油纸"与"有子"谐音，寓意多子多福；伞形为圆，象征团圆美满；红色伞面更是婚嫁喜事的必备之物。</p>
+                </div>
+            </div>
+            <div class="meaning-item">
+                <div class="meaning-num">02</div>
+                <div class="meaning-text">
+                    <h3>文学意象</h3>
+                    <p>戴望舒《雨巷》中那把"撑着油纸伞"的意象，成为江南烟雨最经典的文化符号，承载着无数文人的乡愁与诗意。</p>
+                </div>
+            </div>
+            <div class="meaning-item">
+                <div class="meaning-num">03</div>
+                <div class="meaning-text">
+                    <h3>非遗传承</h3>
+                    <p>作为国家级非物质文化遗产，油纸伞制作技艺承载着中华民族的工匠精神，是传统文化活态传承的重要载体。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 3D油纸伞展示板块 -->
+    <section class="model-show" id="model3d">
+        <h2 class="section-title">3D油纸伞展示</h2>
+        <div class="section-line"></div>
+        <!-- 3D画布容器 -->
+        <div id="umbrella3d" style="width: 100%; height: 500px; border-radius: 12px; overflow: hidden;"></div>
+    </section>
+<!-- 引入Three.js库（在线CDN，不用下载本地js文件） -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+// 初始化场景
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xf8f5f0);
+const container = document.getElementById('umbrella3d');
+const width = container.clientWidth;
+const height = 500;
+//相机
+const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 1000);
+camera.position.z = 5;
+//渲染器
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(width, height);
+renderer.shadowMap.enabled = true;
+container.appendChild(renderer.domElement);
+//控制器
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.05;
+//灯光
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+scene.add(ambientLight);
+const dirLight = new THREE.DirectionalLight(0xffffff, 0.7);
+dirLight.position.set(6,6,6);
+scene.add(dirLight);
+//加载油纸伞模型 + 自动适配大小
+const loader = new GLTFLoader();
+let umbrellaModel;
+loader.load(
+    'model/youzhisan.glb',
+    function (gltf) {
+        umbrellaModel = gltf.scene;
+        //自动缩放适配画布，解决模型过大过小看不见
+        const box = new THREE.Box3().setFromObject(umbrellaModel);
+        const size = new THREE.Vector3();
+        box.getSize(size);
+        const maxDim = Math.max(size.x, size.y, size.z);
+        const scale = 2 / maxDim;
+        umbrellaModel.scale.set(scale,scale,scale);
+        umbrellaModel.position.y = 0;
+        scene.add(umbrellaModel);
+    },
+    function(xhr){
+        console.log('加载进度: ' + (xhr.loaded/xhr.total*100)+'%');
+    },
+    function(err){
+        console.error("模型加载失败",err);
+    }
+);
+//渲染循环
+function animate(){
+    requestAnimationFrame(animate);
+    if(umbrellaModel){
+        umbrellaModel.rotation.y += 0.003;
+    }
+    controls.update();
+    renderer.render(scene,camera);
+}
+animate();
+//窗口自适应
+window.addEventListener('resize',()=>{
+    const w = container.clientWidth;
+    camera.aspect = w / height;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w,height);
+})
+</script>
+    <!-- 页脚 -->
+    <footer id="contact">
+        <h3>与一伞里乡</h3>
+        <p>📍 四川省泸州市江阳区分水岭镇</p>
+        <p>📧 联系邮箱：example@email.com</p>
+        <p>🕐 开放时间：周一至周日 9:00 - 18:00</p>
+        <div class="copyright">
+            © 2026 与一伞里乡 · 油纸伞非遗文化传承项目 | 保留所有权利
+        </div>
+    </footer>
+    <!-- 平滑滚动 -->
+    <script>
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
